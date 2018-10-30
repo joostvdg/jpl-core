@@ -1,29 +1,26 @@
 <h1>gitRemoteConfigByUrl</h1>
-<br>
 <ul>
     <li>Sets Git origin to use a token with `x-oauth-basic` as authentication</li>
+    <li>Origin remote will be based on url provided as parameter</li>
     <li>Inspired by: https://github.com/github/hub/issues/1644</li>
 </ul>
 <br>
-<h2>Arguments</h2>>
-<br>
+<h2>Arguments</h2>
 <ul>
-    <li><em>url</em>: the Git url (https based)</li>
-    <li><em>credentialsId</em>: credentialsId of your Git oauth token</li>
+    <li><strong>url</strong>: the Git url (https based)</li>
+    <li><strong>credentialsId</strong>: credentialsId of your Git oauth token</li>
 </ul>
 <br>
 <h2>Requirements</h2>
-<br>
 <ul>
     <li>Git checkout based on `https://`</li>
     <li>Git remote that supports `x-oauth-basic` such as GitHub</li>
 </ul>
 <h2>Example</h2>
-<br>
 <pre>
-    <code>
-        def scmVars = checkout scm
-        gitRemoteConfigByUrl(scmVars.GIT_URL, 'githubtoken')
-    </code>
+<code>
+def scmVars = checkout scm
+gitRemoteConfigByUrl(scmVars.GIT_URL, 'githubtoken')
+</code>
 </pre>
 

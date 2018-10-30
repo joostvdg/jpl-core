@@ -1,12 +1,24 @@
-/**
- * Inspired by https://github.com/github/hub/issues/1644
- * @param username
- * @param repo
- * @param credentialsId
- * @return
- */
-def call(username, repo, credentialsId) {
-    withCredentials([string(credentialsId: credentialsId, variable: 'TOKEN')]) {
-        sh "git remote set-url origin https://${env.TOKEN}:x-oauth-basic@github.com/${username}/${repo}.git"
-    }
-}
+<h1>gitRemoteConfig</h1>
+<ul>
+    <li>Sets Git origin to use a token with `x-oauth-basic` as authentication</li>
+    <li>Git remote will be set to https://${env.TOKEN}:x-oauth-basic@github.com/${username}/${repo}.git</li>
+    <li>Inspired by: https://github.com/github/hub/issues/1644</li>
+</ul>
+<br>
+<h2>Arguments</h2>
+<ul>
+    <li><strong>username</strong>: the GitHub username</li>
+    <li><strong>repo</strong>: the GitHub repository</li>
+    <li><strong>credentialsId</strong>: credentialsId of your Git oauth token</li>
+</ul>
+<br>
+<h2>Requirements</h2>
+<ul>
+    <li>Git remote is GitHub</li>
+</ul>
+<h2>Example</h2>
+<pre>
+<code>
+gitRemoteConfig('joostvdg', 'cat', 'githubtoken')
+</code>
+</pre>
