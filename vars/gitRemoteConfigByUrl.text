@@ -1,0 +1,15 @@
+# gitRemoteConfigByUrl
+
+* Sets Git origin to use a token with `x-oauth-basic` as authentication
+* Inspired by: https://github.com/github/hub/issues/1644
+
+## Arguments
+
+* **url**: the Git url (https based)
+* **credentialsId*: credentialsId of your Git oauth token
+
+## Requirements
+
+* a Git checkout based on `https://`
+* a Git remote that supports `x-oauth-basic` such as GitHub
+
