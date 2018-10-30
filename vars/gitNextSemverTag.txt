@@ -1,4 +1,4 @@
-<h1>gitRemoteConfig</h1>
+<h1>gitNextSemverTag</h1>
 <ul>
     <li>Retrieves tags from git based on the given currentVersion parameter</li>
     <li>Will then based on these tags determine the next SemVer version</li>
