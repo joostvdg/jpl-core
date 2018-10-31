@@ -1,0 +1,47 @@
+<h1>gitTag</h1>
+<p>
+Creates a git tag and pushes it to origin.
+<br>
+It will add all the current changes, commit it with a Jenkins message and push it.
+</p>
+<br>
+<h2>Arguments</h2>
+<ul>
+    <li><strong>tagName</strong>: the name of the (annotated) git tag</li>
+</ul>
+<br>
+<h2>Requirements</h2>
+<ul>
+    <li><strong>git</strong> binary should be available on the path</li>
+    <li>should be able to push to <strong>origin</strong> which you can accomplish by using the <strong>gitRemoteConfigByUrl</strong> function</li>
+</ul>
+<h2>Example</h2>
+<pre>
+<code>
+environment {
+    scmVars = ''
+}
+stages {
+    stage('Checkout') {
+        steps {
+            script {
+                scmVars = checkout scm // won't cost much as the data is already here, simply gives us some more information
+            }
+        }
+    }
+    stage('Tag repo') {
+        environment {
+            NEW_VERSION = '0.1.1'
+        }
+        steps {
+            gitRemoteConfigByUrl(scmVars.GIT_URL, 'githubtoken')
+            sh '''git config --global user.email "jenkins@jenkins.io"
+            git config --global user.name "Jenkins"
+            '''
+            // Directly passing in the var will give you an error
+            gitTag("v${NEW_VERSION}")
+        }
+    }
+}
+</code>
+</pre>
